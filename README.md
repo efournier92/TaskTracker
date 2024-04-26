@@ -269,7 +269,7 @@ mutation {
   - This route is mapped to the domain's root.
   - Hitting this route loads our React app.
 
-### [ ] TK-00005 > Front End > Integrate Apollo with React
+### [X] TK-00005 > Front End > Integrate Apollo with React
 
 #### Story
 
@@ -277,7 +277,22 @@ mutation {
 
 #### Acceptance Criteria
 
-- The Apollo library is installed and accessable from the front-end Rails app.
+- The Apollo library is installed and accessible from the front-end Rails app.
+
+### [ ] TK-00006 > Front End > Configure a test suite to run on React Components
+
+#### Story
+
+- As a developer, I want to add a front-end test suite, so I can build and refactor React components with confidence.
+
+#### Acceptance Criteria
+
+- Tooling options have been investigated and the best, most modern option has been selected.
+  - Consider Vitest, along with other potential options.
+  - Ensure the choice is able to test data read via Apollo effectively.
+- A test suite can be executed against React front-end components.
+- Tests have been writtent cover the new `DisplayTasks` component.
+- Tasks are read from the database and rendered to the screen via React.
 
 ### [ ] TK-00007 > Front End > Add a React Component for Displaying a Task
 
@@ -296,7 +311,7 @@ mutation {
   - Clicking this button will nagivate to a dedicated route.
     - This route will include the task `id`.
 
-### [ ] TK-00006 > Front End > Add Routing Capability to React App
+### [ ] TK-00008 > Front End > Add Routing Capability to React App
 
 #### Story
 
@@ -308,7 +323,7 @@ mutation {
   - The simulated route includes the task's `id`.
   - The route includes the react component for displaying a task.
 
-### [ ] TK-00008 > Front End > Add a React Component for Displaying a List of Tasks
+### [ ] TK-00009 > Front End > Add a React Component for Displaying a List of Tasks
 
 #### Story
 
@@ -319,7 +334,7 @@ mutation {
 - The component displays a list of all tasks.
 - The component renders on the `Home` route.
 
-### [ ] TK-00009 > Front End > Add a React Component for Creating a New Task
+### [ ] TK-00010 > Front End > Add a React Component for Creating a New Task
 
 #### Story
 
@@ -344,7 +359,7 @@ mutation {
   - Clicking the `Save` navigates the user to the `Home` route.
   - If the `Save` button is never clicked, the new task data is never persisted.
 
-### TK-00010 > Front End > Add a React Component for Editing an Existing Task
+### TK-00011 > Front End > Add a React Component for Editing an Existing Task
 
 #### Story
 
@@ -359,7 +374,7 @@ mutation {
   - Clicking the `Save` navigates the user to the `Home` route.
   - If the `Save` button is never clicked, the updated task data will not be persisted.
 
-### TK-00011 > Front End > Add a Button for Deleting an Existing Task
+### TK-00012 > Front End > Add a Button for Deleting an Existing Task
 
 #### Story
 
