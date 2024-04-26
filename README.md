@@ -76,6 +76,7 @@ rails s
 
 ```bash
 rails test
+rails spec
 ```
 
 ## Reflections
@@ -148,11 +149,11 @@ rails test
 - Developers can access the GraphQL IDE sandbox via the following url.
   - http://localhost:3000/graphiql
 
-### [ ] TK-00003 > Back End > Wire Up GraphQL for Task Management
+### [X] TK-00003 > Back End > Wire Up GraphQL for Task Management
 
 #### Story
 
-- As a developer, I want to use GraphQL to persist/access tasks to/from the database, so I can efficently communicate with the front end.
+- As a developer, I want to use GraphQL to persist/access `Task` data to/from the database, so I can use it to efficently communicate with the front end.
 
 #### Acceptance Criteria
 
@@ -164,12 +165,91 @@ rails test
   - `updateTask`
   - `deleteTask`
 - All CRUD actions can be successfully performed to interact with `Task` data.
+- Running the below sample query from the `graphiql` IDE should succeed in performing CRUD actions on `Task` data.
+
+#### Sample Queries
+
+##### Create
+
+```text
+mutation {
+  createTask(
+    title: "My New Task Title"
+    description: "Here's a description of my task!"
+    dueDate: "2024-04-24"
+  ) {
+    task {
+      id
+      title
+      description
+      completed
+      dueDate
+      createdAt
+      updatedAt
+    }
+  }
+}
+```
+
+##### Read
+
+```text
+query allTasks {
+  tasks {
+    id
+    title
+    description
+    completed
+    dueDate
+    createdAt
+    updatedAt
+  }
+}
+```
+
+##### Update
+
+```text
+mutation {
+  updateTask(
+    id: 4,
+    attributes: {
+      title: "My New Task Title"
+      description: "Here's a description of my task!"
+      dueDate: "2024-04-24"
+      completed: true
+    }
+  ) {
+    task{
+      id
+      title
+      description
+      completed
+      dueDate
+      createdAt
+      updatedAt
+    }
+  }
+}
+```
+
+##### Destroy
+
+```text
+mutation {
+  destroyTask(
+    id: #{CHOOSE_ID},
+  ) {
+    id
+  }
+}
+```
 
 ### [ ] TK-00004 > Front End > Serve a React App Via Rails
 
 #### Story
 
-- As a developer, I want to host a React front end on Rails, so I can start building a sweet component-based front end.
+- As a developer, I want to host a React front end from Rails, so I can start building a sweet component-based front end.
 
 #### Acceptance Criteria
 
@@ -189,7 +269,9 @@ rails test
   - This route is mapped to the domain's root.
   - Hitting this route loads our React app.
 
-### [ ] TK-00006 > Front End > Add a React Component for Displaying a Task
+### [ ] TK-00006 > Front End > Add Routing Capability to React App
+
+### [ ] TK-00007 > Front End > Add a React Component for Displaying a Task
 
 #### Story
 
@@ -206,7 +288,7 @@ rails test
   - Clicking this button will nagivate to a dedicated route.
     - This route will include the task `id`.
 
-### [ ] TK-00007 > Front End > Add a React Component for Displaying a List of Tasks
+### [ ] TK-00008 > Front End > Add a React Component for Displaying a List of Tasks
 
 #### Story
 
@@ -217,7 +299,7 @@ rails test
 - The component displays a list of all tasks.
 - The component renders on the `Home` route.
 
-### [ ] TK-00008 > Front End > Add a React Component for Creating a New Task
+### [ ] TK-00009 > Front End > Add a React Component for Creating a New Task
 
 #### Story
 
@@ -242,7 +324,7 @@ rails test
   - Clicking the `Save` navigates the user to the `Home` route.
   - If the `Save` button is never clicked, the new task data is never persisted.
 
-### TK-00009 > Front End > Add a React Component for Editing an Existing Task
+### TK-00010 > Front End > Add a React Component for Editing an Existing Task
 
 #### Story
 
@@ -257,7 +339,7 @@ rails test
   - Clicking the `Save` navigates the user to the `Home` route.
   - If the `Save` button is never clicked, the updated task data will not be persisted.
 
-### TK-00010 > Front End > Add a Button for Deleting an Existing Task
+### TK-00011 > Front End > Add a Button for Deleting an Existing Task
 
 #### Story
 

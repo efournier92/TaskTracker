@@ -2,9 +2,10 @@ require "test_helper"
 
 class TaskTest < ActiveSupport::TestCase
   setup do
-    @task = Task.new
-    @task.title = "Task Title"
-    @task.description = "Task Description"
+    @task = Task.new(
+      title: "Task Title",
+      description: "Task Description",
+    )
   end
 
   test "a new task with title and description explicitly set is valid" do
