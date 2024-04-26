@@ -60,17 +60,23 @@ bundle
 #### Prepare the Database
 
 ```bash
-rails db:create
+export PGUSER="$REPLACE_WITH_YOUR_LOCAL_DB_USER"
+export PGPASSWORD=="$REPLACE_WITH_YOUR_LOCAL_DB_PASSWORD"
+rails db:reset
 rails db:migrate
 ```
 
-####
+#### Serve
 
-- TODO
+```bash
+rails s
+```
 
 ### Test
 
-- TODO
+```bash
+rails test
+```
 
 ## Reflections
 
@@ -90,7 +96,7 @@ rails db:migrate
 
 ## Feature Stories
 
-### [ ] TK-00000 > Back End > Initialize the Rails Application
+### [X] TK-00000 > Back End > Initialize the Rails Application
 
 #### Story
 
@@ -105,7 +111,7 @@ rails db:migrate
 - The README includes a list of feature stories for development.
   - _For lack of a proper ticketing system in scope of this assessment._
 
-### [ ] TK-00001 > Back End > Create the `Task` Model
+### [X] TK-00001 > Back End > Create the `Task` Model
 
 #### Story
 
