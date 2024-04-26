@@ -44,7 +44,7 @@
 - TODO
 - PostgreSQL is installed and running locally.
   - [Docs](https://www.postgresql.org/docs/current/tutorial-install.html)
-- Ruby
+- Ruby 3.2.2
   - `ruby -v`
 - Rails
   - `gem install rails`
@@ -136,15 +136,15 @@ rails test
 - New instances of the model can be persisted to a PostgreSQL database.
 - Some demo tasks are defined in `seeds.rb`
 
-### [ ] TK-00002 > Back End > Add GraphQL with Rails
+### [X] TK-00002 > Back End > Add GraphQL to the Rails Project
 
 #### Story
 
-- As a developer, I want to install GraphQL on the back end, so I can use it to communicate with the front end.
+- As a developer, I want to install GraphQL on the back end, so I can use it to interact with data and communicate with the front end.
 
 #### Acceptance Criteria
 
-- The Rails project includes GraphQL.
+- The Rails project includes GraphQL functionality.
 - Developers can access the GraphQL IDE sandbox via the following url.
   - http://localhost:3000/graphiql
 
@@ -152,7 +152,7 @@ rails test
 
 #### Story
 
-- As a developer, I want to use GraphQL to persist/access tasks to/from the database, so I can effeciently communicate with the front end.
+- As a developer, I want to use GraphQL to persist/access tasks to/from the database, so I can efficently communicate with the front end.
 
 #### Acceptance Criteria
 
@@ -177,7 +177,19 @@ rails test
   - This route is mapped to the domain's root.
   - Hitting this route loads our React app.
 
-### [ ] TK-00005 > Front End > Add a React Component for Displaying a Task
+### [ ] TK-00005 > Front End > Integrate Apollo with React
+
+#### Story
+
+- As a developer, I want to consume the Apollow library from the app's React front end, so I can use GraphQL to intereact with `Task` data.
+
+#### Acceptance Criteria
+
+- A `Home` route is defined within Rails.
+  - This route is mapped to the domain's root.
+  - Hitting this route loads our React app.
+
+### [ ] TK-00006 > Front End > Add a React Component for Displaying a Task
 
 #### Story
 
@@ -194,7 +206,7 @@ rails test
   - Clicking this button will nagivate to a dedicated route.
     - This route will include the task `id`.
 
-### [ ] TK-00006 > Front End > Add a React Component for Displaying a List of Tasks
+### [ ] TK-00007 > Front End > Add a React Component for Displaying a List of Tasks
 
 #### Story
 
@@ -205,7 +217,7 @@ rails test
 - The component displays a list of all tasks.
 - The component renders on the `Home` route.
 
-### [ ] TK-00007 > Front End > Add a React Component for Creating a New Task
+### [ ] TK-00008 > Front End > Add a React Component for Creating a New Task
 
 #### Story
 
