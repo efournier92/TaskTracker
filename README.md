@@ -79,6 +79,18 @@ rails test
 rails spec
 ```
 
+## Links
+
+### Local
+
+#### Root
+
+- http://localhost:3000/
+
+#### Graphiql > Sandbox IDE
+
+- http://localhost:3000/graphiql
+
 ## Reflections
 
 ### Challenges
@@ -245,7 +257,7 @@ mutation {
 }
 ```
 
-### [ ] TK-00004 > Front End > Serve a React App Via Rails
+### [X] TK-00004 > Front End > Serve a React App Via Rails
 
 #### Story
 
@@ -261,15 +273,11 @@ mutation {
 
 #### Story
 
-- As a developer, I want to consume the Apollow library from the app's React front end, so I can use GraphQL to intereact with `Task` data.
+- As a developer, I want to consume the Apollo library from the app's React front end, so I can use GraphQL to intereact with `Task` data.
 
 #### Acceptance Criteria
 
-- A `Home` route is defined within Rails.
-  - This route is mapped to the domain's root.
-  - Hitting this route loads our React app.
-
-### [ ] TK-00006 > Front End > Add Routing Capability to React App
+- The Apollo library is installed and accessable from the front-end Rails app.
 
 ### [ ] TK-00007 > Front End > Add a React Component for Displaying a Task
 
@@ -287,6 +295,18 @@ mutation {
 - The component includes a `Navigate` button.
   - Clicking this button will nagivate to a dedicated route.
     - This route will include the task `id`.
+
+### [ ] TK-00006 > Front End > Add Routing Capability to React App
+
+#### Story
+
+- As a developer, I want to add routing functionality on the client side, so I can simulate route navigation from the React app.
+
+#### Acceptance Criteria
+
+- A user can navigate to a specific task.
+  - The simulated route includes the task's `id`.
+  - The route includes the react component for displaying a task.
 
 ### [ ] TK-00008 > Front End > Add a React Component for Displaying a List of Tasks
 
