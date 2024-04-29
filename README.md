@@ -294,11 +294,11 @@ mutation {
 - Tests have been writtent cover the new `DisplayTasks` component.
 - Tasks are read from the database and rendered to the screen via React.
 
-### [ ] TK-00007 > Front End > Add a React Component for Displaying a Task
+### [X] TK-00007 > Front End > Add a React Component for Displaying a Task
 
 #### Story
 
-- As a user, I want to a React component for displaying a task, so I can view task details.
+- As a user, I want to a React component for displaying an individual task, so I can view task details.
 
 #### Acceptance Criteria
 
@@ -308,8 +308,8 @@ mutation {
   - Due Date.
   - Has the task been completed?
 - The component includes a `Navigate` button.
-  - Clicking this button will nagivate to a dedicated route.
-    - This route will include the task `id`.
+  - _Clicking this button will eventually nagivate to a dedicated route._
+    - _This route will include the task `id`._
 
 ### [ ] TK-00008 > Front End > Add Routing Capability to React App
 

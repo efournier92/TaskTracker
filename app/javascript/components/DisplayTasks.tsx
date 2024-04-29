@@ -1,6 +1,7 @@
 import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Task } from '../models/Task';
+import DisplayTask from './DisplayTask';
 
 const GET_TASKS = gql`
   query allTasks {
@@ -25,10 +26,7 @@ function DisplayTasks() {
 
   return data.tasks.map((task: Task) => (
     <>
-      <div key={task.id}>
-        <h1>{task.title}</h1>
-        <div>{task.description}</div>
-      </div>
+      <DisplayTask task={task} />
     </>
   ));
 }
