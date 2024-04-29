@@ -2,23 +2,11 @@ import React from 'react';
 import { useQuery, gql } from '@apollo/client';
 import { Task } from '../models/Task';
 import DisplayTask from './DisplayTask';
-
-const GET_TASKS = gql`
-  query allTasks {
-    tasks {
-      id
-      title
-      description
-      completed
-      dueDate
-      createdAt
-      updatedAt
-    }
-  }
-`;
+import { getTasksQuery } from '../services/QueryService';
+import { Link } from 'react-router-dom';
 
 function DisplayTasks() {
-  const { loading, error, data } = useQuery(GET_TASKS);
+  const { loading, error, data } = useQuery(getTasksQuery());
 
   if (loading) return <p>Loading...</p>;
 
@@ -26,7 +14,10 @@ function DisplayTasks() {
 
   return data.tasks.map((task: Task) => (
     <>
-      <DisplayTask task={task} />
+      <DisplayTask
+        task={task}
+        navigationLink={<Link to={`/tasks/${task.id}`}>Navigate</Link>}
+      />
     </>
   ));
 }
