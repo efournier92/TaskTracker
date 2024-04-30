@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import App from '../components/App';
+import { ThemeProvider, createTheme } from '@mui/material/styles';
+import CssBaseline from '@mui/material/CssBaseline';
 import {
   ApolloClient,
   InMemoryCache,
@@ -22,10 +24,19 @@ const client = new ApolloClient({
   cache: new InMemoryCache(),
 });
 
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+  },
+});
+
 ReactDOM.createRoot(document.getElementById('react-root')!).render(
   <React.StrictMode>
     <ApolloProvider client={client}>
-      <App />
+      <ThemeProvider theme={darkTheme}>
+        <CssBaseline />
+        <App />
+      </ThemeProvider>
     </ApolloProvider>
   </React.StrictMode>,
 );

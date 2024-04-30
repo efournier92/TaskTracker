@@ -61,7 +61,7 @@ bundle
 
 ```bash
 export PGUSER="$REPLACE_WITH_YOUR_LOCAL_DB_USER"
-export PGPASSWORD=="$REPLACE_WITH_YOUR_LOCAL_DB_PASSWORD"
+export PGPASSWORD="$REPLACE_WITH_YOUR_LOCAL_DB_PASSWORD"
 rails db:reset
 rails db:migrate
 ```
@@ -279,7 +279,7 @@ mutation {
 
 - The Apollo library is installed and accessible from the front-end Rails app.
 
-### [X] TK-00007 > Front End > Add a React Component for Displaying a Task
+### [X] TK-00006 > Front End > Add a React Component for Displaying a Task
 
 #### Story
 
@@ -296,7 +296,7 @@ mutation {
   - _Clicking this button will eventually nagivate to a dedicated route._
     - _This route will include the task `id`._
 
-### [X] TK-00008 > Front End > Add Routing Capability to React App
+### [X] TK-00007 > Front End > Add Routing Capability to React App
 
 #### Story
 
@@ -308,7 +308,7 @@ mutation {
   - The simulated route includes the task's `id`.
   - The route includes the react component for displaying a task.
 
-### [X] TK-00009 > Front End > Add a React Component for Displaying a List of Tasks
+### [X] TK-00008 > Front End > Add a React Component for Displaying a List of Tasks
 
 #### Story
 
@@ -319,7 +319,7 @@ mutation {
 - The component displays a list of all tasks.
 - The component renders on the `Home` route.
 
-### [X] TK-00010 > Front End > Add a React Component for Creating a New Task
+### [X] TK-00009 > Front End > Add a React Component for Creating a New Task
 
 #### Story
 
@@ -344,7 +344,7 @@ mutation {
   - Clicking the `Save` navigates the user to the route to view the newly-created task.
   - If the `Save` button is never clicked, the new task data is never persisted.
 
-### [X] TK-00011 > Front End > Add a React Component for Editing an Existing Task
+### [X] TK-00010 > Front End > Add a React Component for Editing an Existing Task
 
 #### Story
 
@@ -359,7 +359,7 @@ mutation {
   - Clicking the `Save` navigates the user to the route to view the newly-updated task.
   - If the `Save` button is never clicked, the updated task data will not be persisted.
 
-### [X] TK-00012 > Front End > Add a Button for Deleting an Existing Task
+### [X] TK-00011 > Front End > Add a Button for Deleting an Existing Task
 
 #### Story
 
@@ -374,3 +374,14 @@ mutation {
   - The button is only displayed if the task has already been saved the the database.
     - It is not displayed if the task has never been saved.
   - Upon successful deletion, the user is redirected back to the `Home` route.
+
+### [X] TK-00012 > Front End > Add Material Styling
+
+#### Story
+
+- As a developer, I want to add a Material UI library to the front end, so that users can enjoy a more stylish experience.
+
+#### Acceptance Criteria
+
+- Material UI components are consumable from the React application.
+- Styles for all existing components have been enhanced using Material components.

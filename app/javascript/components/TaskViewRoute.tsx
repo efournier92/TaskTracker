@@ -1,10 +1,10 @@
 import React from 'react';
-import { Link, useParams } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
 import { getTaskByIdQuery } from '../services/QueryService';
-import DisplayTask from './DisplayTask';
+import TaskView from './TaskView';
 
-function DisplayTaskRoute() {
+function TaskViewRoute() {
   const id = useParams()?.id || '';
 
   const { loading, error, data } = useQuery(getTaskByIdQuery(id));
@@ -15,13 +15,9 @@ function DisplayTaskRoute() {
 
   return (
     <>
-      <DisplayTask
-        task={data.task}
-        viewLink={<Link to="/">Return</Link>}
-        editLink={<Link to={`/edit-task/${id}`}>Edit</Link>}
-      />
+      <TaskView task={data.task} />
     </>
   );
 }
 
-export default DisplayTaskRoute;
+export default TaskViewRoute;
