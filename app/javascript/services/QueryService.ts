@@ -49,3 +49,23 @@ export const CREATE_TASK = gql`
     }
   }
 `;
+
+export const UPDATE_TASK = gql`
+  mutation updateTask(
+    $id: ID!
+    $title: String!
+    $description: String!
+    $dueDate: ISO8601Date!
+  ) {
+    updateTask(
+      id: $id
+      attributes: {
+        title: $title
+        description: $description
+        dueDate: $dueDate
+      }
+    ) {
+      id
+    }
+  }
+`;

@@ -3,10 +3,15 @@ import { Task } from '../models/Task';
 
 interface IDisplayTaskProps {
   task: Task;
-  navigationLink: ReactElement;
+  viewLink: ReactElement;
+  editLink: ReactElement;
 }
 
-function DisplayTask({ task, navigationLink }: IDisplayTaskProps) {
+function DisplayTask({
+  task,
+  viewLink: viewLink,
+  editLink: editLink,
+}: IDisplayTaskProps) {
   return (
     <>
       <div key={task.id}>
@@ -14,7 +19,7 @@ function DisplayTask({ task, navigationLink }: IDisplayTaskProps) {
         <div>{task.description}</div>
         <div>{task.dueDate?.toString()}</div>
         <div>Completed? {task.completed?.toString()}</div>
-        {navigationLink}
+        {viewLink} {editLink}
       </div>
     </>
   );

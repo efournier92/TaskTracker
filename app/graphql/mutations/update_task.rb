@@ -2,7 +2,7 @@
 
 module Mutations
   class UpdateTask < BaseMutation
-    field :task, Types::TaskType, null: false
+    field :id, ID, null: false
 
     argument :id, ID, required: true
     argument :attributes, Types::TaskAttributesInputType, required: true
@@ -12,7 +12,7 @@ module Mutations
       if task.update(attributes.to_h)
         # Return the task to the client on succcess
         {
-          task: task,
+          id: task.id,
           errors: []
         }
       else

@@ -359,7 +359,7 @@ mutation {
   - Clicking the `Save` navigates the user to the route to view the newly-created task.
   - If the `Save` button is never clicked, the new task data is never persisted.
 
-### [ ] TK-00011 > Front End > Add a React Component for Editing an Existing Task
+### [X] TK-00011 > Front End > Add a React Component for Editing an Existing Task
 
 #### Story
 
@@ -367,11 +367,11 @@ mutation {
 
 #### Acceptance Criteria
 
-- An `Edit` button has been adde to the Task-View component.
+- An `Edit` button has been added to the Task-View component.
   - Clicking this button will navigate to a route with the same component as is used for creating a task.
     - The inputs will be initialized with the task's preexisting data.
   - Clicking the `Save` button persists the task to the database.
-  - Clicking the `Save` navigates the user to the `Home` route.
+  - Clicking the `Save` navigates the user to the route to view the newly-updated task.
   - If the `Save` button is never clicked, the updated task data will not be persisted.
 
 ### [ ] TK-00012 > Front End > Add a Button for Deleting an Existing Task

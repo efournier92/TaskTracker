@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import DisplayTaskRoute from './DisplayTaskRoute';
 import CreateTask from './CreateTask';
 import { Link } from 'react-router-dom';
+import EditTask from './EditTask';
 
 function App() {
   return (
@@ -23,6 +24,10 @@ function App() {
             <Route
               path="/create-task"
               element={<CreateTask />}
+            />
+            <Route
+              path="/edit-task/:id"
+              element={<EditTask />}
             />
           </Routes>
         </BrowserRouter>

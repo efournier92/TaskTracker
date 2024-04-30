@@ -1,37 +1,47 @@
-import { useMutation } from '@apollo/client';
+import { useMutation, useQuery } from '@apollo/client';
 import React from 'react';
-import { CREATE_TASK } from '../services/QueryService';
-import { useNavigate } from 'react-router-dom';
+import { UPDATE_TASK, getTaskByIdQuery } from '../services/QueryService';
+import { useNavigate, useParams } from 'react-router-dom';
 
-function CreateTask() {
+function EditTask() {
   let titleInput: HTMLInputElement;
   let descriptionInput: HTMLInputElement;
   let dueDateInput: HTMLInputElement;
 
-  const [createTask, { data, loading, error }] = useMutation(CREATE_TASK);
+  const [updateTask, {}] = useMutation(UPDATE_TASK);
   const navigate = useNavigate();
+
+  const id = useParams()?.id || '';
+
+  const getTaskQuery = useQuery(getTaskByIdQuery(id));
+
+  if (getTaskQuery.loading) return <p>Loading...</p>;
+
+  if (getTaskQuery.error) return <p>Error : {getTaskQuery.error.message}</p>;
 
   return (
     <>
-      <h1>Create Task</h1>
+      <h1>Update Task</h1>
       <div>
         <form
           onSubmit={(e) => {
             e.preventDefault();
 
-            createTask({
+            updateTask({
               variables: {
+                id: parseInt(id),
                 title: titleInput.value,
                 description: descriptionInput.value,
                 dueDate: dueDateInput.value,
               },
             }).then((res: any) => {
-              navigate(`/tasks/${res.data.createTask.id}`);
+              navigate(`/tasks/${res.data.updateTask.id}`);
             });
           }}
         >
           <input
             placeholder="Title"
+            defaultValue={getTaskQuery.data.task.title}
             ref={(node: HTMLInputElement) => {
               titleInput = node;
             }}
@@ -41,6 +51,7 @@ function CreateTask() {
 
           <input
             placeholder="Description"
+            defaultValue={getTaskQuery.data.task.description}
             ref={(node: HTMLInputElement) => {
               descriptionInput = node;
             }}
@@ -50,6 +61,11 @@ function CreateTask() {
 
           <input
             placeholder="Date (YYYY-MM-DD)"
+            defaultValue={
+              new Date(getTaskQuery.data.task.dueDate)
+                .toISOString()
+                .split('T')[0]
+            }
             ref={(node: HTMLInputElement) => {
               dueDateInput = node;
             }}
@@ -57,11 +73,11 @@ function CreateTask() {
 
           <br />
 
-          <button type="submit">Create Task</button>
+          <button type="submit">Update Task</button>
         </form>
       </div>
     </>
   );
 }
 
-export default CreateTask;
+export default EditTask;

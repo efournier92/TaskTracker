@@ -16,7 +16,8 @@ function DisplayTasks() {
     <>
       <DisplayTask
         task={task}
-        navigationLink={<Link to={`/tasks/${task.id}`}>Navigate</Link>}
+        viewLink={<Link to={`/tasks/${task.id}`}>View</Link>}
+        editLink={<Link to={`/edit-task/${task.id}`}>Edit</Link>}
       />
     </>
   ));

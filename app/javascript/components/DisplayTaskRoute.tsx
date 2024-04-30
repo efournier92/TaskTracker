@@ -17,7 +17,8 @@ function DisplayTaskRoute() {
     <>
       <DisplayTask
         task={data.task}
-        navigationLink={<Link to="/">Return</Link>}
+        viewLink={<Link to="/">Return</Link>}
+        editLink={<Link to={`/edit-task/${id}`}>Edit</Link>}
       />
     </>
   );
