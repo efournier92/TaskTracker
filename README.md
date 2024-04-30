@@ -69,6 +69,7 @@ rails db:migrate
 #### Serve
 
 ```bash
+npm run dev
 rails s
 ```
 

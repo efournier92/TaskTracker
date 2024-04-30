@@ -1,20 +1,18 @@
 import { gql } from '@apollo/client';
 
-export const getTasksQuery = () => {
-  return gql`
-    query allTasks {
-      tasks {
-        id
-        title
-        description
-        completed
-        dueDate
-        createdAt
-        updatedAt
-      }
+export const GET_ALL_TASKS = gql`
+  query allTasks {
+    tasks {
+      id
+      title
+      description
+      completed
+      dueDate
+      createdAt
+      updatedAt
     }
-  `;
-};
+  }
+`;
 
 export const getTaskByIdQuery = (id: string) => {
   return gql`
@@ -37,12 +35,14 @@ export const CREATE_TASK = gql`
     $title: String!
     $description: String!
     $dueDate: ISO8601Date!
+    $completed: Boolean!
   ) {
     createTask(
       attributes: {
         title: $title
         description: $description
         dueDate: $dueDate
+        completed: $completed
       }
     ) {
       id
@@ -56,6 +56,7 @@ export const UPDATE_TASK = gql`
     $title: String!
     $description: String!
     $dueDate: ISO8601Date!
+    $completed: Boolean!
   ) {
     updateTask(
       id: $id
@@ -63,6 +64,7 @@ export const UPDATE_TASK = gql`
         title: $title
         description: $description
         dueDate: $dueDate
+        completed: $completed
       }
     ) {
       id

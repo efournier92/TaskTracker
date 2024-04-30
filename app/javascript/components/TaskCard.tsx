@@ -5,6 +5,7 @@ import TextField from '@mui/material/TextField';
 import IconButton from '@mui/material/IconButton';
 import SaveIcon from '@mui/icons-material/Save';
 import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 import VisibilityIcon from '@mui/icons-material/Visibility';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -27,54 +28,56 @@ function TaskCard({ task, isEditing, onSubmitAction }: EditTaskFormProps) {
   const dueDateInputRef = useRef<HTMLInputElement>(null);
   const completedInputRef = useRef<HTMLInputElement>(null);
 
+  const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+
+    const taskToSave = new Task(
+      titleInputRef?.current?.value || '',
+      descriptionInputRef?.current?.value || '',
+      new Date(dueDateInputRef?.current?.value || ''),
+      completedInputRef?.current?.checked || false,
+    );
+
+    taskToSave.id = task.id;
+
+    onSubmitAction(taskToSave);
+  };
+
   return (
     <>
       <form
         onSubmit={(e) => {
-          e.preventDefault();
-
-          const taskToSave = new Task(
-            titleInputRef?.current?.value || '',
-            descriptionInputRef?.current?.value || '',
-            new Date(dueDateInputRef?.current?.value || ''),
-            completedInputRef?.current?.checked || false,
-          );
-
-          taskToSave.id = task.id;
-
-          onSubmitAction(task);
+          onFormSubmit(e);
         }}
       >
-        <Card
-          key={task.id}
-          sx={{ m: 4 }}
-        >
+        <Card sx={{ m: 4 }}>
           <CardContent>
             <TextField
               label="Title"
               defaultValue={task.title}
-              disabled={!isEditing}
               inputRef={titleInputRef}
+              disabled={!isEditing}
               sx={{ width: 1, padding: 2 }}
             />
             <TextField
               label="Description"
               defaultValue={task.description}
-              disabled={!isEditing}
               inputRef={descriptionInputRef}
+              disabled={!isEditing}
               sx={{ width: 1, padding: 2 }}
             />
             <TextField
               label="Date (YYYY-MM-DD)"
               defaultValue={new Date(task.dueDate).toISOString().split('T')[0]}
-              disabled={!isEditing}
               inputRef={dueDateInputRef}
+              disabled={!isEditing}
               sx={{ width: 1, padding: 2 }}
             />
             <FormControlLabel
-              control={<Checkbox />}
+              control={<Checkbox defaultChecked={task.completed} />}
               label="Is Complete?"
               inputRef={completedInputRef}
+              disabled={!isEditing}
               sx={{ width: 1, padding: 2 }}
             />
           </CardContent>
@@ -116,6 +119,18 @@ function TaskCard({ task, isEditing, onSubmitAction }: EditTaskFormProps) {
                     <EditIcon />
                   </IconButton>
                 </Link>
+              )}
+              {!isEditing && (
+                <IconButton
+                  type="submit"
+                  size="large"
+                  edge="start"
+                  aria-label="menu"
+                  onClick={() => onSubmitAction(task)}
+                  sx={{ m: 2 }}
+                >
+                  <DeleteIcon />
+                </IconButton>
               )}
             </Typography>
           </CardActions>

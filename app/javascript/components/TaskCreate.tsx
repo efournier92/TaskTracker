@@ -15,6 +15,7 @@ function TaskCreate() {
         title: task.title,
         description: task.description,
         dueDate: task.dueDate,
+        completed: task.completed,
       },
     }).then((res: any) => {
       navigate(`/view-task/${res.data.createTask.id}`);

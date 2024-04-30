@@ -1,8 +1,9 @@
 import React from 'react';
 import { Task } from '../models/Task';
 import { useMutation } from '@apollo/client';
-import { DESTROY_TASK } from '../services/QueryService';
+import { useNavigate } from 'react-router-dom';
 import TaskCard from './TaskCard';
+import { DESTROY_TASK } from '../services/QueryService';
 
 interface IDisplayTaskProps {
   task: Task;
@@ -10,14 +11,15 @@ interface IDisplayTaskProps {
 
 function TaskView({ task }: IDisplayTaskProps) {
   const [destroyTask, {}] = useMutation(DESTROY_TASK);
+  const navigate = useNavigate();
 
   function deleteTask(id: number): void {
     destroyTask({
       variables: {
         id: id,
       },
-    }).then((res: any) => {
-      // navigate(`/tasks/${res.data.updateTask.id}`);
+    }).then(() => {
+      navigate('/');
     });
   }
 
@@ -26,7 +28,7 @@ function TaskView({ task }: IDisplayTaskProps) {
       <TaskCard
         task={task}
         isEditing={false}
-        onSubmitAction={() => {}}
+        onSubmitAction={deleteTask}
       />
     </>
   );

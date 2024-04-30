@@ -25,9 +25,10 @@ function EditTask() {
         title: task.title,
         description: task.description,
         dueDate: task.dueDate,
+        completed: task.completed,
       },
-    }).then((res: any) => {
-      navigate(`/view-task/${res.data.task.id}`);
+    }).then(() => {
+      navigate(`/view-task/${task.id}`);
     });
   };
 
