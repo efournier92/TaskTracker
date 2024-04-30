@@ -31,17 +31,44 @@
 
 ### Design Philiosphy
 
-- TODO
+#### Approach
+
+- Given I always approach development with business specification in mind, I started the process by analyzing the requirements and laying out a set of simple [Feature Stories](#feature-stories).
+  - This allowed me to drive my development accoridng to more realistic processes.
+
+#### Back End
+
+- This represents a fairly vanilla implementation of a Rails 7 with a GraphQL implementation.
+  - The theoretical intent being that another developer can easily dive into the codebase and find what they're expecting.
+
+#### Front End
+
+- In scope of this excercise, the components were kept fairly sparse.
+  - The same form component is used for to view, create, and edit, tasks.
+  - The Material UI library was pulled in to make the view look nice without much effort.
+    - _While this represents a large dependency, the philosophy was that, were this going to be a larger project with ongoing maintenence, we'd be happy to have all the benefits of this library at our disposal from inception._
 
 ### Components
 
-- TODO
+#### Back End
+
+- Given this was scope as a simple SPA, the only Rails route is `Home`.
+  - This hands off routing control to the React app.
+  - _We would likely want to rethink this paradigm, were we designing a more complex and feature-rich application._
+
+#### Front End
+
+- All React components can be found in the `app/javascript/component`.
+  - All Task-related components start with `Task`, for simple sorting.
+    - `TaskCard` represents the main form view, consumed by all other Task-related action components:
+      - `TaskView`
+      - `TaskCreate`
+      - `TaskEdit`
 
 ## Setup Instructions
 
 ### Prerequisites
 
-- TODO
 - PostgreSQL is installed and running locally.
   - [Docs](https://www.postgresql.org/docs/current/tutorial-install.html)
 - Ruby 3.2.2
@@ -51,7 +78,7 @@
 
 ### Run
 
-#### Install Necessary Gems
+#### Install Necessary Gem Dependencies
 
 ```bash
 bundle
@@ -96,17 +123,27 @@ rails spec
 
 ### Challenges
 
-- TODO.
-- Routing felt unecessary.
-- Dependency choices.
-- GraphQL
-  - Learning curve.
-  - Testing.
+#### GraphQL Ramp Up
+
+- Much of my time working on this project was spent ramping up on GraphQL.
+  - _While this took some time, learning to understand and implement this tool is liable to pay dividends for me in the future._
+
+#### Requirements
+
+- Naturally, business requirements sometimes can get in the way of a developer's vision for an application.
+  - In this case, I felt the requirements to implement routing and navigation complicated the app unnesarily at this stage in development.
+    - Had it not been for this requirement, I would have build it as a
+    - Given the purpose here was to demonstrate skill, I'm not complaining.
+      - However, had this been a feature requirement for a real application, I would have wanted to discuss it's necessity in more detail with the team.
 
 ### Areas for Improvement
 
-- TODO
 - Instead of returning `Task.all` for our query, we would want to add a implement[connections](https://graphql-ruby.org/pagination/connection_concepts) in a future iteration, to be more performant.
+- Presently, navigating to the `view-task` route will makes an additional `graphql` call to fetch details for the individual task.
+  - While this call would be required were we to land on a route cold, we should bypass the call when navigating from the `TaskIndex` page, give we already have the details we need.
+- Were we planning to extend the front-end application any further, we would most certainly want to integrate a test suite.
+  - _While I forwent doing so in the interest of time (likely a falacy), I'd be far more comfortable refactoring if I had a suite of specs to run._
+- The front-end could benefit additional validations on inputs and rendering of error responses from GraphQL mutations, in the interest of enhancing UX.
 
 ## Feature Stories
 

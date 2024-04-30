@@ -1,7 +1,7 @@
 import { gql } from '@apollo/client';
 
 export const GET_ALL_TASKS = gql`
-  query allTasks {
+  query GetAllTasks {
     tasks {
       id
       title
@@ -14,24 +14,22 @@ export const GET_ALL_TASKS = gql`
   }
 `;
 
-export const getTaskByIdQuery = (id: string) => {
-  return gql`
-    query getTasksById {
-      task(id: ${id}) {
-        id
-        title
-        description
-        completed
-        dueDate
-        createdAt
-        updatedAt
-      }
+export const GET_TASK_BY_ID = gql`
+  query GetTaskById($id: ID!) {
+    task(id: $id) {
+      id
+      title
+      description
+      completed
+      dueDate
+      createdAt
+      updatedAt
     }
-  `;
-};
+  }
+`;
 
 export const CREATE_TASK = gql`
-  mutation createTask(
+  mutation CreateTask(
     $title: String!
     $description: String!
     $dueDate: ISO8601Date!
@@ -46,12 +44,18 @@ export const CREATE_TASK = gql`
       }
     ) {
       id
+      task {
+        title
+        description
+        dueDate
+        completed
+      }
     }
   }
 `;
 
 export const UPDATE_TASK = gql`
-  mutation updateTask(
+  mutation UpdateTask(
     $id: ID!
     $title: String!
     $description: String!
@@ -68,6 +72,12 @@ export const UPDATE_TASK = gql`
       }
     ) {
       id
+      task {
+        title
+        description
+        dueDate
+        completed
+      }
     }
   }
 `;

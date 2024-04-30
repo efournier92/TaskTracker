@@ -3,6 +3,7 @@
 module Mutations
   class CreateTask < BaseMutation
     field :id, ID, null: false
+    field :task, Types::TaskType, null: false
 
     argument :attributes, Types::TaskAttributesInputType, required: true
 
@@ -13,6 +14,7 @@ module Mutations
         # Return the task to the client on succcess
         {
           id: task.id,
+          task: task,
           errors: []
         }
       else

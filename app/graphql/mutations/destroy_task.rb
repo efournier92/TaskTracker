@@ -8,6 +8,9 @@ module Mutations
 
     def resolve(id:)
       task = Task.find(id)
+
+      return unless task
+
       task.destroy
         {
           id: id,

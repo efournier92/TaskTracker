@@ -2,7 +2,7 @@ import React from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import TaskCreate from './TaskCreate';
 import TaskIndex from './TaskIndex';
-import NavigationBar from './NavigationBar';
+import NavBar from './NavBar';
 import TaskViewRoute from './TaskViewRoute';
 import EditTask from './TaskEdit';
 
@@ -11,7 +11,7 @@ function App() {
     <>
       <div id="react-app-container">
         <BrowserRouter>
-          <NavigationBar />
+          <NavBar />
           <Routes>
             <Route
               path="/"

@@ -1,4 +1,4 @@
-import React, { useRef } from 'react';
+import React, { useRef, useState } from 'react';
 import { Task } from '../models/Task';
 import { Link } from 'react-router-dom';
 import TextField from '@mui/material/TextField';
@@ -23,19 +23,23 @@ class EditTaskFormProps {
 }
 
 function TaskCard({ task, isEditing, onSubmitAction }: EditTaskFormProps) {
-  const titleInputRef = useRef<HTMLInputElement>(null);
-  const descriptionInputRef = useRef<HTMLInputElement>(null);
-  const dueDateInputRef = useRef<HTMLInputElement>(null);
-  const completedInputRef = useRef<HTMLInputElement>(null);
+  const [titleState, setTitleState] = useState<string>(task.title);
+  const [descriptionState, setDescriptionState] = useState<string>(
+    task.description,
+  );
+  const [dueDateState, setDueDateState] = useState<string>(
+    new Date(task.dueDate).toISOString().split('T')[0],
+  );
+  const [completedState, setCompletedState] = useState<boolean>(task.completed);
 
   const onFormSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
     const taskToSave = new Task(
-      titleInputRef?.current?.value || '',
-      descriptionInputRef?.current?.value || '',
-      new Date(dueDateInputRef?.current?.value || ''),
-      completedInputRef?.current?.checked || false,
+      titleState,
+      descriptionState,
+      new Date(dueDateState),
+      completedState,
     );
 
     taskToSave.id = task.id;
@@ -50,35 +54,39 @@ function TaskCard({ task, isEditing, onSubmitAction }: EditTaskFormProps) {
           onFormSubmit(e);
         }}
       >
-        <Card sx={{ m: 4 }}>
+        <Card sx={{ m: 4, padding: 4 }}>
           <CardContent>
             <TextField
               label="Title"
-              defaultValue={task.title}
-              inputRef={titleInputRef}
+              value={titleState}
+              onChange={(e) => setTitleState(e.target.value)}
               disabled={!isEditing}
-              sx={{ width: 1, padding: 2 }}
+              sx={{ width: 1, mt: 4 }}
             />
             <TextField
               label="Description"
-              defaultValue={task.description}
-              inputRef={descriptionInputRef}
+              value={descriptionState}
+              onChange={(e) => setDescriptionState(e.target.value)}
               disabled={!isEditing}
-              sx={{ width: 1, padding: 2 }}
+              sx={{ width: 1, mt: 4 }}
             />
             <TextField
               label="Date (YYYY-MM-DD)"
-              defaultValue={new Date(task.dueDate).toISOString().split('T')[0]}
-              inputRef={dueDateInputRef}
+              value={dueDateState}
+              onChange={(e) => setDueDateState(e.target.value)}
               disabled={!isEditing}
-              sx={{ width: 1, padding: 2 }}
+              sx={{ width: 1, mt: 4 }}
             />
             <FormControlLabel
-              control={<Checkbox defaultChecked={task.completed} />}
+              control={
+                <Checkbox
+                  checked={completedState}
+                  onChange={(e) => setCompletedState(e.target.checked)}
+                />
+              }
               label="Is Complete?"
-              inputRef={completedInputRef}
               disabled={!isEditing}
-              sx={{ width: 1, padding: 2 }}
+              sx={{ width: 1, mt: 4 }}
             />
           </CardContent>
           <CardActions>

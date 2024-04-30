@@ -1,13 +1,15 @@
 import React from 'react';
 import { useParams } from 'react-router-dom';
 import { useQuery } from '@apollo/client';
-import { getTaskByIdQuery } from '../services/QueryService';
+import { GET_TASK_BY_ID } from '../services/QueryService';
 import TaskView from './TaskView';
 
 function TaskViewRoute() {
   const id = useParams()?.id || '';
 
-  const { loading, error, data } = useQuery(getTaskByIdQuery(id));
+  const { loading, error, data } = useQuery(GET_TASK_BY_ID, {
+    variables: { id },
+  });
 
   if (loading) return <p>Loading...</p>;
 
@@ -15,6 +17,7 @@ function TaskViewRoute() {
 
   return (
     <>
+      <h1>View Task</h1>
       <TaskView task={data.task} />
     </>
   );

@@ -9,7 +9,7 @@ import AppBar from '@mui/material/AppBar';
 import AddIcon from '@mui/icons-material/Add';
 import HomeIcon from '@mui/icons-material/Home';
 
-function NavigationBar() {
+function NavBar() {
   return (
     <>
       <Box>
@@ -59,4 +59,4 @@ function NavigationBar() {
   );
 }
 
-export default NavigationBar;
+export default NavBar;
