@@ -31,3 +31,21 @@ export const getTaskByIdQuery = (id: string) => {
     }
   `;
 };
+
+export const CREATE_TASK = gql`
+  mutation createTask(
+    $title: String!
+    $description: String!
+    $dueDate: ISO8601Date!
+  ) {
+    createTask(
+      attributes: {
+        title: $title
+        description: $description
+        dueDate: $dueDate
+      }
+    ) {
+      id
+    }
+  }
+`;

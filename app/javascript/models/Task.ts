@@ -2,7 +2,7 @@ export class Task {
   id: number;
   title: string;
   description: string;
-  isComplete: boolean;
+  completed: boolean;
   dueDate: Date;
 
   constructor(title: string, description: string, dueDate: Date) {

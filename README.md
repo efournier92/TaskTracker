@@ -311,7 +311,7 @@ mutation {
   - _Clicking this button will eventually nagivate to a dedicated route._
     - _This route will include the task `id`._
 
-### [ ] TK-00008 > Front End > Add Routing Capability to React App
+### [X] TK-00008 > Front End > Add Routing Capability to React App
 
 #### Story
 
@@ -323,7 +323,7 @@ mutation {
   - The simulated route includes the task's `id`.
   - The route includes the react component for displaying a task.
 
-### [ ] TK-00009 > Front End > Add a React Component for Displaying a List of Tasks
+### [X] TK-00009 > Front End > Add a React Component for Displaying a List of Tasks
 
 #### Story
 
@@ -334,7 +334,7 @@ mutation {
 - The component displays a list of all tasks.
 - The component renders on the `Home` route.
 
-### [ ] TK-00010 > Front End > Add a React Component for Creating a New Task
+### [X] TK-00010 > Front End > Add a React Component for Creating a New Task
 
 #### Story
 
@@ -356,10 +356,10 @@ mutation {
 
 - The component includes a `Save` button.
   - Clicking the `Save` button persists the task to the database.
-  - Clicking the `Save` navigates the user to the `Home` route.
+  - Clicking the `Save` navigates the user to the route to view the newly-created task.
   - If the `Save` button is never clicked, the new task data is never persisted.
 
-### TK-00011 > Front End > Add a React Component for Editing an Existing Task
+### [ ] TK-00011 > Front End > Add a React Component for Editing an Existing Task
 
 #### Story
 
@@ -374,7 +374,7 @@ mutation {
   - Clicking the `Save` navigates the user to the `Home` route.
   - If the `Save` button is never clicked, the updated task data will not be persisted.
 
-### TK-00012 > Front End > Add a Button for Deleting an Existing Task
+### [ ] TK-00012 > Front End > Add a Button for Deleting an Existing Task
 
 #### Story
 
