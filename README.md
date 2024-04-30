@@ -3,7 +3,7 @@
 ## Contents
 
 - [Overview](#overview)
-- [Technologies](#technlogies)
+- [Technologies](#technologies)
 - [Project Structure](#project-structure)
   - [Design Philosophy](#design-philosophy)
   - [Components](#components)
@@ -29,24 +29,24 @@
 
 ## Project Structure
 
-### Design Philiosphy
+### Design Philosophy
 
 #### Approach
 
-- Given I always approach development with business specification in mind, I started the process by analyzing the requirements and laying out a set of simple [Feature Stories](#feature-stories).
-  - This allowed me to drive my development accoridng to more realistic processes.
+- Given I always approach development with business specifications in mind, I started the process by analyzing the requirements and laying out a set of simple [Feature Stories](#feature-stories).
+  - This allowed me to drive my development according to somewhat realistic processes.
 
-#### Back End
+#### Back End Choices
 
 - This represents a fairly vanilla implementation of a Rails 7 with a GraphQL implementation.
   - The theoretical intent being that another developer can easily dive into the codebase and find what they're expecting.
 
-#### Front End
+#### Front End Choices
 
-- In scope of this excercise, the components were kept fairly sparse.
-  - The same form component is used for to view, create, and edit, tasks.
-  - The Material UI library was pulled in to make the view look nice without much effort.
-    - _While this represents a large dependency, the philosophy was that, were this going to be a larger project with ongoing maintenence, we'd be happy to have all the benefits of this library at our disposal from inception._
+- In scope of this exercise, the components were kept fairly sparse.
+  - In the name of simplicity and to demonstrate reusability, the same form component is used for to view, create, and edit, tasks.
+- The Material UI library was pulled in to make the view look nice without much effort.
+  - _While this represents a large dependency, the philosophy was that, were this going to be a larger project with ongoing maintenance, we'd be happy to have all the benefits of this library at our disposal from inception._
 
 ### Components
 
@@ -55,15 +55,16 @@
 - Given this was scope as a simple SPA, the only Rails route is `Home`.
   - This hands off routing control to the React app.
   - _We would likely want to rethink this paradigm, were we designing a more complex and feature-rich application._
+- Graphql queries and mutations can be reviewed [here](https://github.com/efournier92/TaskTracker/tree/main/app/graphql)
 
 #### Front End
 
 - All React components can be found in the `app/javascript/component`.
   - All Task-related components start with `Task`, for simple sorting.
-    - `TaskCard` represents the main form view, consumed by all other Task-related action components:
-      - `TaskView`
-      - `TaskCreate`
-      - `TaskEdit`
+    - [`TaskCard`](https://github.com/efournier92/TaskTracker/tree/main/app/javascript/components/TaskCard.tsx) represents the main form view, consumed by all other Task-related action components:
+      - [`TaskView`](https://github.com/efournier92/TaskTracker/tree/main/app/javascript/components/TaskView.tsx)
+      - [`TaskCreate`](https://github.com/efournier92/TaskTracker/tree/main/app/javascript/components/TaskCreate.tsx)
+      - [`TaskEdit`](https://github.com/efournier92/TaskTracker/tree/main/app/javascript/components/TaskEdit.tsx)
 
 ## Setup Instructions
 
@@ -131,7 +132,7 @@ rails spec
 #### Requirements
 
 - Naturally, business requirements sometimes can get in the way of a developer's vision for an application.
-  - In this case, I felt the requirements to implement routing and navigation complicated the app unnesarily at this stage in development.
+  - In this case, I felt the requirements to implement routing and navigation complicated the app unnecessarily at this stage in development.
     - Had it not been for this requirement, I would have build it as a
     - Given the purpose here was to demonstrate skill, I'm not complaining.
       - However, had this been a feature requirement for a real application, I would have wanted to discuss it's necessity in more detail with the team.
@@ -142,8 +143,9 @@ rails spec
 - Presently, navigating to the `view-task` route will makes an additional `graphql` call to fetch details for the individual task.
   - While this call would be required were we to land on a route cold, we should bypass the call when navigating from the `TaskIndex` page, give we already have the details we need.
 - Were we planning to extend the front-end application any further, we would most certainly want to integrate a test suite.
-  - _While I forwent doing so in the interest of time (likely a falacy), I'd be far more comfortable refactoring if I had a suite of specs to run._
+  - _While I forwent doing so in the interest of time (likely a fallacy), I'd be far more comfortable refactoring if I had a suite of specs to run._
 - The front-end could benefit additional validations on inputs and rendering of error responses from GraphQL mutations, in the interest of enhancing UX.
+- Some additional environment work should be done to avoid needing to export `PGUSER` and `PGPASSWORD` in order to configure the PostreSQL database.
 
 ## Feature Stories
 
@@ -409,7 +411,7 @@ mutation {
   - Clicking this button will delete the task from the database.
   - Upon successful deletion, the task disappears from the user's list of tasks.
 - The new `Delete` button has been added to the Task-Edit component.
-  - The button is only displayed if the task has already been saved the the database.
+  - The button is only displayed if the task has already been saved to the database.
     - It is not displayed if the task has never been saved.
   - Upon successful deletion, the user is redirected back to the `Home` route.
 
