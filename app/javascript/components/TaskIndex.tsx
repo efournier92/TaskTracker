@@ -11,14 +11,20 @@ function TaskIndex() {
 
   if (error) return <p>Error : {error.message}</p>;
 
-  const tasks = data.tasks.map((task: Task) => (
-    <TaskView
-      key={task.id}
-      task={task}
-    />
-  ));
+  // Sort by most recent first
+  let allTasks = [...data.tasks]
+    .sort((a: Task, b: Task) => {
+      return new Date(a.createdAt).getTime() - new Date(b.createdAt).getTime();
+    })
+    .reverse()
+    .map((task: Task) => (
+      <TaskView
+        key={task.id}
+        task={task}
+      />
+    ));
 
-  return <>{tasks}</>;
+  return <>{allTasks}</>;
 }
 
 export default TaskIndex;

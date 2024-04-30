@@ -134,7 +134,6 @@ function TaskCard({ task, isEditing, onSubmitAction }: EditTaskFormProps) {
                   size="large"
                   edge="start"
                   aria-label="menu"
-                  onClick={() => onSubmitAction(task)}
                   sx={{ m: 2 }}
                 >
                   <DeleteIcon />

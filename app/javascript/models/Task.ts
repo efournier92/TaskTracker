@@ -4,6 +4,7 @@ export class Task {
   description: string;
   completed: boolean;
   dueDate: Date;
+  createdAt: Date;
 
   constructor(
     title: string,
