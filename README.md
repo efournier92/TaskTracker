@@ -279,21 +279,6 @@ mutation {
 
 - The Apollo library is installed and accessible from the front-end Rails app.
 
-### [ ] TK-00006 > Front End > Configure a test suite to run on React Components
-
-#### Story
-
-- As a developer, I want to add a front-end test suite, so I can build and refactor React components with confidence.
-
-#### Acceptance Criteria
-
-- Tooling options have been investigated and the best, most modern option has been selected.
-  - Consider Vitest, along with other potential options.
-  - Ensure the choice is able to test data read via Apollo effectively.
-- A test suite can be executed against React front-end components.
-- Tests have been writtent cover the new `DisplayTasks` component.
-- Tasks are read from the database and rendered to the screen via React.
-
 ### [X] TK-00007 > Front End > Add a React Component for Displaying a Task
 
 #### Story
@@ -374,7 +359,7 @@ mutation {
   - Clicking the `Save` navigates the user to the route to view the newly-updated task.
   - If the `Save` button is never clicked, the updated task data will not be persisted.
 
-### [ ] TK-00012 > Front End > Add a Button for Deleting an Existing Task
+### [X] TK-00012 > Front End > Add a Button for Deleting an Existing Task
 
 #### Story
 
@@ -382,9 +367,8 @@ mutation {
 
 #### Acceptance Criteria
 
-- A reusable `Delete` button has been added to the system.
+- A `Delete` button has been added to the Task-View component.
   - Clicking this button will delete the task from the database.
-- The new `Delete` button has been added to the Task-View component.
   - Upon successful deletion, the task disappears from the user's list of tasks.
 - The new `Delete` button has been added to the Task-Edit component.
   - The button is only displayed if the task has already been saved the the database.

@@ -69,3 +69,11 @@ export const UPDATE_TASK = gql`
     }
   }
 `;
+
+export const DESTROY_TASK = gql`
+  mutation DestroyTask($id: ID!) {
+    destroyTask(id: $id) {
+      id
+    }
+  }
+`;
